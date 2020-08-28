@@ -1,6 +1,9 @@
 .chatBox {
   flex: 0.7;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .chatBoxHeader {
@@ -37,6 +40,45 @@
 }
 
 .chatBoxMain {
+  flex: 1;
+  min-height: 200px;
+  background-image: url("https://wallpaperaccess.com/full/2224368.png");
+  background-size: contain;
+  padding: 20px;
+}
+
+.singleMessageBox {
+  background-color: #262d31;
+  width: fit-content;
+  display: flex;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.IsentThis {
+  margin-left: auto;
+  background-color: #054740;
+}
+
+.senderandSent {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.sender {
+  color: #a75b5d;
+}
+
+.sentMessage {
+  color: #e7e7e8;
+}
+
+.sentTime {
+  align-self: flex-end;
+  padding-left: 10px;
+  color: #84888b;
+  font-size: 12px;
 }
 
 .chatBoxFooter {

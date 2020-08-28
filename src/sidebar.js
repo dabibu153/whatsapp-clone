@@ -40,9 +40,9 @@ function Sidebar() {
         </div>
       </div>
       <div className="hr"></div>
+      <div className="addNewChat">Add New Chat</div>
+      <div className="hr"></div>
       <div className="sidebarChat">
-        <div className="addNewChat">Add New Chat</div>
-
         <SidebarChat />
         <SidebarChat />
         <SidebarChat />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./css/chat.css";
 import { Avatar } from "@material-ui/core";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -7,6 +7,11 @@ import { BsThreeDotsVertical, BsMic } from "react-icons/bs";
 import { GrEmoji } from "react-icons/gr";
 
 function Chat() {
+  const [message, setmessage] = useState("");
+
+  const sendmessage = (e) => {
+    e.preventdefault();
+  };
   return (
     <div className="chatBox">
       <div className="chatBoxHeader">
@@ -34,7 +39,18 @@ function Chat() {
           />
         </div>
       </div>
-      <div className="chatBoxMain"></div>
+      <div className="chatBoxMain">
+        <div className={`singleMessageBox ${true && "IsentThis"}`}>
+          <div className="senderandSent">
+            <div className="sender">Dabibu</div>
+            <div className="sentMessage">
+              hello there lalalallaallalalalalalalalala
+            </div>
+          </div>
+          <div className="sentTime">8:00 P.M</div>
+        </div>
+      </div>
+
       <div className="chatBoxFooter">
         <div className="emojiLogo">
           <GrEmoji
@@ -43,16 +59,25 @@ function Chat() {
           />
         </div>
         <div className="chatInput">
-          <input
-            type="text"
-            style={{
-              borderStyle: "none",
-              height: "30px",
-              borderRadius: "15px",
-              width: "100%",
-              backgroundColor: "#33383B",
-            }}
-          />
+          <form>
+            <input
+              type="text"
+              value={message}
+              onChange={(e) => setmessage(e.target.value)}
+              style={{
+                borderStyle: "none",
+                height: "30px",
+                borderRadius: "15px",
+                width: "100%",
+                backgroundColor: "#33383B",
+              }}
+            />
+            <button
+              type="submit"
+              onClick={sendmessage}
+              style={{ display: "none" }}
+            ></button>
+          </form>
         </div>
         <div className="micLogo">
           <BsMic size={23} style={{ color: "#B1B3B5", paddingLeft: "10px" }} />
