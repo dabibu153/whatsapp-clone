@@ -1,0 +1,15 @@
+.App {
+  background-color: #090e11;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AppBody {
+  background-color: #262d31;
+  height: 95vh;
+  width: 90vw;
+  max-width: 1400px;
+  display: flex;
+}

@@ -1,0 +1,56 @@
+.chatBox {
+  flex: 0.7;
+  width: 100%;
+}
+
+.chatBoxHeader {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #131c21;
+  height: 50px;
+}
+
+.cbhLeft {
+  display: flex;
+  align-items: center;
+}
+
+.cbhAvatar {
+  padding-right: 10px;
+}
+
+.cbhdName {
+  color: #d4d5d6;
+  font-size: 18px;
+}
+
+.cbhdPeople {
+  color: #9ea0a2;
+  font-size: 15px;
+}
+
+.cbhOtherIcons {
+  display: flex;
+  flex-direction: row;
+}
+
+.chatBoxMain {
+}
+
+.chatBoxFooter {
+  padding: 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #131c21;
+}
+
+.chatInput {
+  height: 30px;
+  border-radius: 15px;
+  width: 100%;
+  background-color: #33383b;
+}

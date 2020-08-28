@@ -1,0 +1,42 @@
+.sidebar {
+  flex: 0.3;
+  border: 1px solid rgb(77, 77, 77);
+  padding: 10px;
+}
+
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hr {
+  border-bottom: 1px solid rgb(77, 77, 77);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.searchBar {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background-color: #323739;
+  border-radius: 30px;
+  height: 28px;
+  width: 95%;
+  padding-left: 15px;
+}
+
+.addNewChat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: white;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.addNewChat:hover {
+  background-color: #323739;
+}
