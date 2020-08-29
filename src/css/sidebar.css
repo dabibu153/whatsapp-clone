@@ -26,6 +26,7 @@
   height: 28px;
   width: 95%;
   padding-left: 15px;
+  cursor: pointer;
 }
 
 .addNewChat {

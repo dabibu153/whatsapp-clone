@@ -1,27 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./css/chat.css";
 import { Avatar } from "@material-ui/core";
 import { AiOutlineSearch } from "react-icons/ai";
 import { ImAttachment } from "react-icons/im";
 import { BsThreeDotsVertical, BsMic } from "react-icons/bs";
 import { GrEmoji } from "react-icons/gr";
+import { useParams } from "react-router-dom";
+import db from "./fireBase";
+import { useStateValue } from "./stateProvider";
+import firebase from "firebase";
 
 function Chat() {
   const [message, setmessage] = useState("");
+  const [roomName, setRoomName] = useState("");
+  const { roomId } = useParams();
+  const [seed, setseed] = useState("");
+  const [textMessages, settextMessages] = useState([]);
+  const [{ user }, dispatch] = useStateValue();
+
+  useEffect(() => {
+    if (roomId) {
+      db.collection("chat-rooms")
+        .doc(roomId)
+        .onSnapshot((snapshot) => setRoomName(snapshot.data().name));
+      db.collection("chat-rooms")
+        .doc(roomId)
+        .collection("messages")
+        .orderBy("time", "asc")
+        .onSnapshot((snapshot) =>
+          settextMessages(snapshot.docs.map((doc) => doc.data()))
+        );
+    }
+  }, [roomId]);
+
+  useEffect(() => {
+    setseed(Math.floor(Math.random() * 5000));
+  }, [roomId]);
 
   const sendmessage = (e) => {
-    e.preventdefault();
+    e.preventDefault();
+    console.log(message);
+    setmessage("");
+
+    db.collection("chat-rooms").doc(roomId).collection("messages").add({
+      text: message,
+      name: user.displayName,
+      time: firebase.firestore.FieldValue.serverTimestamp(),
+    });
   };
   return (
     <div className="chatBox">
       <div className="chatBoxHeader">
         <div className="cbhLeft">
           <div className="cbhAvatar">
-            <Avatar />
+            <Avatar
+              src={`https://avatars.dicebear.com/api/human/${seed}.svg`}
+            />
           </div>
           <div className="cbhDetails">
-            <div className="cbhdName">Test1</div>
-            <div className="cbhdPeople">a,b,c,d...</div>
+            <div className="cbhdName">{roomName}</div>
+            <div className="cbhdPeople">
+              {new Date(textMessages[-1]?.timestamp?.toDate()).toUTCString()}
+            </div>
           </div>
         </div>
         <div className="cbhOtherIcons">
@@ -40,15 +80,21 @@ function Chat() {
         </div>
       </div>
       <div className="chatBoxMain">
-        <div className={`singleMessageBox ${true && "IsentThis"}`}>
-          <div className="senderandSent">
-            <div className="sender">Dabibu</div>
-            <div className="sentMessage">
-              hello there lalalallaallalalalalalalalala
+        {textMessages?.map((message) => (
+          <div
+            className={`singleMessageBox ${
+              user.displayName === message.name && "IsentThis"
+            }`}
+          >
+            <div className="senderandSent">
+              <div className="sender">{message.name}</div>
+              <div className="sentMessage">{message.text}</div>
+            </div>
+            <div className="sentTime">
+              {new Date(message.timestamp?.toDate()).toUTCString()}
             </div>
           </div>
-          <div className="sentTime">8:00 P.M</div>
-        </div>
+        ))}
       </div>
 
       <div className="chatBoxFooter">

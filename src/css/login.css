@@ -1,0 +1,18 @@
+.loginPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginPage > img {
+  height: 200px;
+}
+
+.loginPage > Button {
+  background-color: #00a859;
+  font-weight: 600;
+  color: #e7e7e8;
+}
+
+.loginPage > Button:hover {
+  background-color: #054740;
+}
