@@ -3,6 +3,8 @@
   border: 1px solid rgb(77, 77, 77);
   padding: 10px;
   min-height: 600px;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebarHeader {
@@ -41,4 +43,9 @@
 }
 .addNewChat:hover {
   background-color: #323739;
+}
+
+.sidebarChat {
+  flex: 1;
+  overflow-y: scroll;
 }
