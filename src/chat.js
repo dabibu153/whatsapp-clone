@@ -60,7 +60,9 @@ function Chat() {
           <div className="cbhDetails">
             <div className="cbhdName">{roomName}</div>
             <div className="cbhdPeople">
-              {new Date(textMessages[-1]?.timestamp?.toDate()).toUTCString()}
+              {new Date(
+                textMessages[textMessages.length - 1]?.time?.toDate()
+              ).toUTCString()}
             </div>
           </div>
         </div>
@@ -91,7 +93,7 @@ function Chat() {
               <div className="sentMessage">{message.text}</div>
             </div>
             <div className="sentTime">
-              {new Date(message.timestamp?.toDate()).toUTCString()}
+              {new Date(message.time?.toDate()).toUTCString()}
             </div>
           </div>
         ))}
